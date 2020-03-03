@@ -42,6 +42,8 @@ export default {
         .catch(error => {
           console.log("hej", error);
         });
+
+      this.name = "";
     }
   }
 

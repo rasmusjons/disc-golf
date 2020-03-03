@@ -104,6 +104,19 @@ app.post("/courses", async (req, res) => {
 
 
 
+app.get("/courses", async (req, res) => {
+
+    try {
+        const course = await Course.find({})
+        res.status(200).send(course)
+    } catch (e) {
+        res.status(500).send()
+    }
+});
+
+
+
+
 //ROUNDS
 
 app.post("/rounds", async (req, res) => {

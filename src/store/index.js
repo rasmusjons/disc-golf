@@ -8,7 +8,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     currentHole: 0,
-    courses: "",
+    courses: [],
     players: []
   },
   mutations: {
@@ -21,19 +21,16 @@ export default new Vuex.Store({
 
     async GET_COURSES(state) {
       try {
-        let response = await axios.get("http://localhost:3000/rounds")
-        this.state.courses = response.data[0].course
+        let response = await axios.get("http://localhost:3000/courses")
+
+        this.state.courses = response.data
       } catch (e) {
         error => console.log(error)
       }
     },
-
-
-
     async GET_PLAYERS(state) {
       try {
         let response = await axios.get("http://localhost:3000/users")
-        console.log(response.data)
         this.state.players = response.data
       } catch (e) {
         error => console.log(error)
